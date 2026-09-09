@@ -1,0 +1,135 @@
+---
+import "../styles/global.css";
+import SiteNav from "./SiteNav.astro";
+import SiteFooter from "./SiteFooter.astro";
+import { site } from "../data/site";
+
+interface Props {
+  /** Page title, e.g. "Explore — HKUST ECE MakerSpace" */
+  title: string;
+  description: string;
+  /** Path (relative to site root) of the social preview image. */
+  ogImage?: string;
+}
+
+const { title, description, ogImage = "/images/facilities.jpg" } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(ogImage, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <script>
+    // Progressive-enhancement hook: reveal styles only apply when JS runs
+    document.documentElement.classList.add("js");
+  </script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="preload"
+      href="/fonts/space-grotesk-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteNav />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+
+    <script>
+      // Mobile nav slide-over
+      const body = document.body;
+      const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+      const panel = document.getElementById("mobile-menu");
+      if (toggle && panel) {
+        const setOpen = (open: boolean) => {
+          body.classList.toggle("menu-open", open);
+          toggle.setAttribute("aria-expanded", String(open));
+        };
+        toggle.addEventListener("click", () =>
+          setOpen(!body.classList.contains("menu-open")),
+        );
+        panel.addEventListener("click", (e) => {
+          if ((e.target as HTMLElement).closest("a")) setOpen(false);
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setOpen(false);
+        });
+      }
+
+      // Scroll-reveal (respects prefers-reduced-motion)
+      const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduced || !("IntersectionObserver" in window)) {
+        targets.forEach((el) => el.classList.add("is-visible"));
+      } else {
+        let revealed = 0;
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealed++;
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+        );
+        targets.forEach((el) => io.observe(el));
+        // Safety net: if IO never fires (broken/headless renderers),
+        // reveal everything instead of hiding content forever
+        setTimeout(() => {
+          if (revealed === 0) targets.forEach((el) => el.classList.add("is-visible"));
+        }, 2500);
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 100;
+    background: var(--c-accent);
+    color: var(--c-on-accent);
+    font-family: var(--font-display);
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    border-radius: var(--r-sm);
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+</style>

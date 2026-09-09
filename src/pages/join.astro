@@ -1,0 +1,329 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Join Us — HKUST ECE MakerSpace"
+  description="Join the HKUST ECE MakerSpace — no membership fee, no selection process. Sign up, complete ELEC 0001 and two induction workshops, and start building."
+  ogImage="/images/join-hero.jpg"
+>
+  <section class="hero page-hero">
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="/images/join-hero.jpg"
+        alt=""
+        width="1787"
+        height="1186"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">Join Us</p>
+        <h1 class="hero-title">JOIN US and START BUILDING!</h1>
+        <p class="hero-lede">
+          There is no membership fee and no selection process. If you have an
+          idea — or want to find one — you belong here.
+        </p>
+        <div class="btn-row">
+          <a
+            class="btn btn-primary btn-lg"
+            href={site.links.joinForm}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apply now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Steps</p>
+        <h2 class="section-title">How to join</h2>
+      </div>
+      <ol class="steps">
+        <li data-reveal>
+          <h3>Sign up</h3>
+          <p>Complete the membership sign-up form — it takes two minutes.</p>
+        </li>
+        <li data-reveal style="--d: 0.08s;">
+          <h3>Pass ELEC 0001</h3>
+          <p>
+            Complete the introductory ELEC 0001 course, including lab safety
+            on Canvas.
+          </p>
+        </li>
+        <li data-reveal style="--d: 0.16s;">
+          <h3>Get inducted</h3>
+          <p>
+            Participate in two induction training workshops to learn the
+            equipment safely.
+          </p>
+        </li>
+        <li data-reveal style="--d: 0.24s;">
+          <h3>Start building</h3>
+          <p>
+            You'll receive a confirmation email and your student card will be
+            added to our access database.
+          </p>
+        </li>
+      </ol>
+      <div class="btn-row" style="margin-top: var(--s-6);" data-reveal>
+        <a
+          class="btn btn-primary btn-lg"
+          href={site.links.joinForm}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apply now
+        </a>
+        <a class="btn btn-ghost btn-lg" href="/faq">Read the FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container split" style="align-items: stretch;">
+      <div data-reveal>
+        <p class="eyebrow">Perks</p>
+        <h2 class="section-title">What you get</h2>
+        <ul class="lede" style="list-style: none; display: flex; flex-direction: column; gap: var(--s-3); font-size: var(--text-md);">
+          <li>✦&nbsp; Access to the MakerSpace lab (Room 3125A) during office hours</li>
+          <li>✦&nbsp; After-hours access supervised by an Executive Committee member</li>
+          <li>✦&nbsp; Tools, equipment, materials and supplies within the lab</li>
+          <li>✦&nbsp; Support and resources as a member</li>
+          <li>✦&nbsp; All MakerSpace functions, activities and General Meetings</li>
+          <li>✦&nbsp; A voice — members may speak on matters at General Meetings</li>
+        </ul>
+      </div>
+      <div class="card" data-reveal style="--d: 0.1s;">
+        <div class="card-body">
+          <h3 class="card-title">Who is eligible</h3>
+          <p class="strip-title" style="margin-bottom: var(--s-4);">
+            {site.eligibility}
+          </p>
+          <p class="card-text">
+            Non-ECE students can join a member's project team, and Year 1
+            SENG school-based students can join with an Executive Committee
+            mentor. Full rules, renewal criteria and restrictions are in the
+            Membership Policy below.
+          </p>
+          <a class="more-link" href="#membership-policy">Read the Membership Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="/images/makerspace-interior.png"
+        alt=""
+        width="2268"
+        height="1512"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <h2 class="hero-title">READY? THE SPACE IS WAITING.</h2>
+      <p class="lede" style="text-align: center;">
+        Questions? Reach out to us at
+        <a href={`mailto:${site.email}`}>{site.email}</a> — otherwise, see
+        you in Room 3125A.
+      </p>
+      <div class="btn-row" style="justify-content: center;">
+        <a
+          class="btn btn-primary btn-lg"
+          href={site.links.joinForm}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apply now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="membership-policy">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Policy</p>
+        <h2 class="section-title">Membership Policy</h2>
+        <p class="lede">
+          The following is taken from the ECE MakerSpace Operational
+          Constitution — also available as a
+          <a href={site.links.policyPdf} target="_blank" rel="noopener noreferrer">PDF ↗</a>.
+        </p>
+      </div>
+
+      <div class="policy prose" data-reveal>
+        <h3>ARTICLE III: MEMBERSHIP</h3>
+
+        <h4>3.1 Basic Eligibility of Membership</h4>
+        <p>
+          All students who are students registered in the Electronic and
+          Computer Engineering Department (ELEC, MEIC &amp; CPEG) of the Hong
+          Kong University of Science and Technology shall be eligible for
+          membership. A student from another Department or Major shall not be
+          a member of the DAG without express approval from the ECE Faculty's
+          Supervisory Board.
+        </p>
+
+        <h4>3.2 Privileges of Members</h4>
+        <p>Members of the DAG shall have the right:</p>
+        <ol>
+          <li>
+            To Access to the MakerSpace Lab (Room 3125A) during:
+            <ol>
+              <li>Office hours (9:30am - 5:30pm) except weekends and public holidays.</li>
+              <li>After-hours (non-office hours) under the supervision of an Executive Committee member (DO NOT WORK ALONE).</li>
+            </ol>
+          </li>
+          <li>
+            To use tools and equipment within the MakerSpace lab subject to
+            the following:
+            <ol>
+              <li>Workshop area equipment requires further operational training and supervision (detailed in operations guide).</li>
+            </ol>
+          </li>
+          <li>Use of materials and supplies within the MakerSpace lab.</li>
+          <li>To gain support and resources as MakerSpace members.</li>
+          <li>To participate in all functions and activities organised by the DAG.</li>
+          <li>To attend all Annual General Meetings and Special General Meetings of the DAG.</li>
+          <li>To speak on matters at General Meetings.</li>
+          <li>To be entitled to other privileges as may be granted in the General Meetings.</li>
+        </ol>
+
+        <h4>3.3 Obligations of Members</h4>
+        <p>Members shall:</p>
+        <ol>
+          <li>Abide by the Constitution, by-laws and safety regulations of the DAG.</li>
+          <li>Abide by the resolutions of General Meetings.</li>
+          <li>Not act in any manner detrimental to the interest and welfare of the DAG.</li>
+        </ol>
+        <p>
+          If any member cannot fulfill the above obligations, his / her
+          membership may be announced to be void by the Core Leadership Team.
+          The final decision is based on the resolution of the Core Leadership
+          Team.
+        </p>
+
+        <h4>3.4 Membership General Qualifications</h4>
+        <p>Students MUST:</p>
+        <ol>
+          <li>Pass lab induction and at least one Enrichment Workshop.</li>
+          <li>Pass ELEC0001 ECE Safety on Canvas.</li>
+          <li>Acknowledge lab rules and agreement on safety terms.</li>
+        </ol>
+
+        <h4>3.5 Membership Eligibility</h4>
+        <p><strong>3.5.1 Electronic and Computer Engineering (ECE) Department Undergraduate Students:</strong></p>
+        <ol>
+          <li>ECE is defined as ELEC, MEIC &amp; CPEG, along with Robotics Minor.</li>
+          <li>ECE Students shall be eligible for membership (including minor programs) upon application;</li>
+          <li>They MUST pass the minimum eligible points for membership renewal, otherwise reapply.</li>
+        </ol>
+        <p><strong>3.5.2 Non-ECE Department Undergraduate Students:</strong></p>
+        <ol>
+          <li>
+            Year 1 SENG School-Based Admission:
+            <ol>
+              <li>Membership can be given through a simple admission with an executive committee member to act as a mentor.</li>
+            </ol>
+          </li>
+          <li>
+            Students from other departments:
+            <ol>
+              <li>Shall be a member of the DAG if the project is grouped with one or more ECE students.</li>
+              <li>Membership renewal follows the evaluation metrics as a group.</li>
+            </ol>
+          </li>
+        </ol>
+        <p><strong>3.5.3 Membership Renewal for all:</strong></p>
+        <ol>
+          <li>Shall be evaluated based on project output, which may be flexible based on workload;</li>
+          <li>MUST pass the minimum eligible points for membership renewal, otherwise reapply;</li>
+        </ol>
+        <p><strong>3.5.4 Further Remarks:</strong></p>
+        <ol>
+          <li>ECE Postgraduate students and staff shall have free access to Makerspace tools and resources.</li>
+          <li>Students MUST NOT work on projects associated with other DAGs. (e.g. Robotics Team, Red Bird Racing, RoboMaster).</li>
+          <li>
+            Students MUST NOT work on academic projects from the following
+            course(s): -ELEC 1100 (To prevent overcrowding of the lab)
+          </li>
+          <li>Postgraduate students not associated with ECE in any way should not be a member.</li>
+          <li>Three breaches of safety requirements or lab rules will result in membership termination.</li>
+        </ol>
+
+        <h4>3.6 Application Period</h4>
+        <p>
+          Application period takes place during the first 1.5 months of Fall
+          or Spring semester – to facilitate lab induction and workshops to
+          be held. Special arrangements can be made on a case-by-case basis
+        </p>
+
+        <h4>3.7 Membership Evaluation Points Metrics</h4>
+        <p>
+          Membership evaluations focus on contributions and involvement,
+          conducted flexibly on a case-by-case basis. This applies to all
+          students, including Makerspace Executive Committee Members and
+          Student Board Members, whose membership is tied to their roles
+          within the DAG. After their roles end, they must meet the same
+          requirements.
+        </p>
+        <p>
+          Individuals: Members must create a project progress log, where as a
+          milestone is reached, it will be recorded such that effort is
+          tracible. This includes course, workshop, and project milestones.
+        </p>
+        <p>
+          Groups: Group projects are traced based on the project progress
+          log, such that project progress and individual contributions can be
+          evaluated for a membership renewal.
+        </p>
+        <p>
+          As such, membership renewal is determined by points awarded by the
+          Division of Internal Development.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Work</th>
+              <th scope="col">Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Member/Group has actively participated in Makerspace and/or utilized Makerspace resources for project creations.</td>
+              <td>5-6</td>
+            </tr>
+            <tr>
+              <td>Member/Group has moderately participated in Makerspace and/or sometimes utilized Makerspace resources for project creations.</td>
+              <td>3-4</td>
+            </tr>
+            <tr>
+              <td>Member/Group has seldom/not participated in Makerspace and/or almost never utilized Makerspace resources for project creations.</td>
+              <td>1-2</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Individuals/Groups with 1-2 points at the end of each membership
+          term are unqualified to renew their membership. If they wish to
+          obtain membership again, they must reapply.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

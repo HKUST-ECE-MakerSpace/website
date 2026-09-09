@@ -1,0 +1,14 @@
+{
+  "name": "makerspace-website",
+  "version": "1.0.0",
+  "description": "HKUST ECE MakerSpace marketing site — static Astro build for web.ecemaker.space",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5"
+  }
+}

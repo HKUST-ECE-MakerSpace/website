@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Events — HKUST ECE MakerSpace"
+  description="Workshops, induction training and events at the HKUST ECE MakerSpace. Check the event calendar for what's coming up next in Room 3125A."
+  ogImage="/images/events-hero.jpg"
+>
+  <section class="hero page-hero">
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="/images/events-hero.jpg"
+        alt=""
+        width="2560"
+        height="1707"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">What's on</p>
+        <h1 class="hero-title">EVENTS</h1>
+        <p class="hero-lede">
+          Enrichment workshops, induction training and build sessions — from
+          PCB design to soldering, there's usually something on at the space.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split" style="align-items: stretch;">
+      <div data-reveal>
+        <h2 class="section-title">EVENT CALENDAR:</h2>
+        <p class="lede" style="margin-bottom: var(--s-4);">
+          Everything upcoming, straight from the space's calendar.
+        </p>
+        <div class="calendar-frame">
+          <iframe
+            src={site.links.calendar}
+            title="ECE MakerSpace event calendar"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+      <div data-reveal style="--d: 0.1s;">
+        <h2 class="section-title">UP NEXT!</h2>
+        <p class="lede" style="margin-bottom: var(--s-4);">
+          The next thing happening at the space — dates on the calendar,
+          sign-ups in the community channels.
+        </p>
+        <figure class="card is-link" style="max-width: 26rem;">
+          <div class="card-media">
+            <img
+              src="/images/event-poster.png"
+              alt="Workshop poster — Intro to 3-Axis CNC on the SnapMaker Artisan, Room 3125A"
+              width="819"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="card-body">
+            <h3 class="card-title">9/10/11 MAC</h3>
+            <p class="card-text">
+              Room 3125A · sessions are capped, so watch the calendar and grab
+              a spot early.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight band">
+    <div class="container split">
+      <div>
+        <h2 class="section-title" style="font-size: var(--text-xl);">
+          Never miss a workshop
+        </h2>
+        <p class="lede">
+          Workshops are announced to members first — join the community to
+          hear about them as they open.
+        </p>
+      </div>
+      <div class="btn-row" style="justify-content: flex-end;">
+        <a class="btn btn-primary" href="/community">Join the community</a>
+        <a class="btn btn-ghost" href="/join">Become a member</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,181 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
+
+const utils = "https://eez156.ece.ust.hk/makerspace-utils/images";
+const issues = [
+  {
+    n: 4,
+    thumb: "/images/newsletter-issue-4.jpeg",
+    width: 1024,
+    height: 389,
+    href: `${utils}/newsletter_4.png`,
+    latest: true,
+  },
+  {
+    n: 3,
+    thumb: "/images/newsletter-issue-3.jpeg",
+    width: 1024,
+    height: 538,
+    href: `${utils}/newsletter_3.png`,
+    latest: false,
+  },
+  {
+    n: 2,
+    thumb: "/images/newsletter-issue-2.png",
+    width: 1024,
+    height: 323,
+    href: `${utils}/newsletter_2.png`,
+    latest: false,
+  },
+  {
+    n: 1,
+    thumb: "/images/newsletter-issue-1.png",
+    width: 2560,
+    height: 751,
+    href: `${utils}/newsletter_1.png`,
+    latest: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Community — HKUST ECE MakerSpace"
+  description="The ECE MakerSpace community: WhatsApp Community, Discord server, university socials and every issue of the MakerSpace newsletter."
+  ogImage="/images/community-team.jpg"
+>
+  <section class="hero page-hero">
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="/images/community-team.jpg"
+        alt=""
+        width="2560"
+        height="1440"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">Community</p>
+        <h1 class="hero-title">COMMUNITY</h1>
+        <p class="hero-lede">
+          The space is only half the story — the other half is the people.
+          Stay in the loop, show your projects, and find teammates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Newsletter</p>
+        <h2 class="section-title">The MakerSpace newsletter</h2>
+        <p class="lede">Click a picture to read its article.</p>
+      </div>
+      <div class="grid grid-2">
+        {
+          issues.map((issue, i) => (
+            <a
+              class="issue-card"
+              href={issue.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reveal
+              style={`--d: ${(i % 2) * 0.08}s;`}
+            >
+              <figure>
+                <img
+                  src={issue.thumb}
+                  alt={`Preview of MakerSpace newsletter issue ${issue.n}`}
+                  width={issue.width}
+                  height={issue.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <span>Issue {issue.n}</span>
+                  <span class="issue-open">{issue.latest ? "Latest issue" : "Read article"} ↗</span>
+                </figcaption>
+              </figure>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Channels</p>
+        <h2 class="section-title">Find us online</h2>
+        <p class="lede">
+          Once you're a member, the WhatsApp Community and Discord server are
+          where members actively communicate, collaborate and share updates.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card" data-reveal>
+          <div class="card-body">
+            <h3 class="card-title">WhatsApp Community</h3>
+            <p class="card-text">
+              The fastest way to hear what's happening at the space. Join
+              links are shared with members after induction.
+            </p>
+          </div>
+        </div>
+        <div class="card" data-reveal style="--d: 0.08s;">
+          <div class="card-body">
+            <h3 class="card-title">Discord server</h3>
+            <p class="card-text">
+              Project help, channel-per-project chatter and event pings — for
+              members, by members.
+            </p>
+          </div>
+        </div>
+        <div class="card" data-reveal style="--d: 0.16s;">
+          <div class="card-body">
+            <h3 class="card-title">University socials</h3>
+            <p class="card-text">
+              Follow HKUST's official channels to catch MakerSpace features
+              alongside the wider university story.
+            </p>
+            <span class="go">
+              <a href={site.links.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+              &nbsp;·&nbsp;
+              <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="/images/community-workshop.jpg"
+        alt=""
+        width="828"
+        height="680"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <h2 class="hero-title">Ready to add your name to the roster?</h2>
+      <p class="lede" style="text-align: center;">
+        Membership is open to ECE students (ELEC, MEIC &amp; CPEG) and
+        Year 1 Undeclared majors — and it's free.
+      </p>
+      <div class="btn-row" style="justify-content: center;">
+        <a class="btn btn-primary btn-lg" href="/join">Join the MakerSpace</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

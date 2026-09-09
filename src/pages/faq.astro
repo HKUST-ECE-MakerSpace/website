@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
+import { faqGroups } from "../data/faq";
+---
+
+<BaseLayout
+  title="FAQ — HKUST ECE MakerSpace"
+  description="Answers about the HKUST ECE MakerSpace: who can join, opening hours, safety rules, equipment training, workshops and how membership works."
+>
+  <section class="hero page-hero">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">FAQ</p>
+        <h1 class="hero-title">QUESTIONS? WE GOT YOU.</h1>
+        <p class="hero-lede">
+          Everything students ask before their first visit. Still stuck?
+          Email <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {
+        faqGroups.map((group) => (
+          <div class="faq-group" data-reveal>
+            <h2>{group.title}</h2>
+            <div class="accordion">
+              {group.items.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <div class="answer" set:html={item.a} />
+                </details>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-tight band">
+    <div class="container split">
+      <div>
+        <h2 class="section-title" style="font-size: var(--text-xl);">
+          Sound like your kind of place?
+        </h2>
+        <p class="lede">
+          No fees, no selection process — the door is open.
+        </p>
+      </div>
+      <div class="btn-row" style="justify-content: flex-end;">
+        <a class="btn btn-primary" href="/join">Join Us</a>
+        <a class="btn btn-ghost" href="/explore">Explore the space</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

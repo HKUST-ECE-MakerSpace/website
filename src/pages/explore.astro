@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
+import { equipment } from "../data/equipment";
+---
+
+<BaseLayout
+  title="Explore — HKUST ECE MakerSpace"
+  description="Explore the ECE MakerSpace: 3D printer farms, laser cutters, resin printers, oscilloscopes, signal generators, power supplies and a full mechanical workspace at HKUST."
+  ogImage="/images/facilities.jpg"
+>
+  <section class="hero page-hero">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">Facilities</p>
+        <h1 class="hero-title">EXPLORE MAKERSPACE</h1>
+        <p class="hero-lede">
+          One room, Room 3125A, packed with the tools to take an idea from
+          sketch to working prototype. Here's what's waiting for you.
+        </p>
+      </div>
+      <figure class="hero-figure" aria-hidden="true">
+        <img
+          src="/images/makerspace-crest.png"
+          alt=""
+          width="437"
+          height="443"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Equipment</p>
+        <h2 class="section-title">MEET OUR EQUIPMENT</h2>
+        <p class="lede">
+          Every category below is available to members. Workshop-area machines
+          need induction training first — the rest, walk up and build.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        {
+          equipment.map((cat, i) => (
+            <article class="card" id={cat.id} data-reveal style={`--d: ${(i % 3) * 0.08}s;`}>
+              <div class="card-media" style={cat.photos.length > 1 ? "display: grid;" : ""}>
+                {cat.photos.map((photo) => (
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={photo.width}
+                    height={photo.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ))}
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{cat.title}</h3>
+                <p class="card-text">{cat.blurb}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <div class="feature-panel" data-reveal>
+        <div>
+          <p class="eyebrow">Components</p>
+          <h2 class="section-title">For a comprehensive list of our components</h2>
+          <p class="lede" style="margin-bottom: var(--s-5);">
+            Resistors to microcontrollers — the MakerWIKI keeps a living list
+            of the component banks you can reach for, plus live machine status.
+          </p>
+          <a
+            class="btn btn-primary"
+            href={site.links.wikiBanks}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Browse the component banks ↗
+          </a>
+        </div>
+        <figure class="frame-photo">
+          <img
+            src="/images/facilities.jpg"
+            alt="Wide view of the MakerSpace facilities"
+            width="2560"
+            height="761"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <figure class="frame-photo" data-reveal>
+        <img
+          src="/images/facilities-collage.png"
+          alt="Collage of the ECE MakerSpace facilities and equipment"
+          width="1484"
+          height="912"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+</BaseLayout>

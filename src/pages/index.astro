@@ -1,0 +1,310 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
+import { equipment } from "../data/equipment";
+
+const rotors = {
+  nouns: ["Desire", "Idea", "Dream", "Vision"],
+  verbs: ["Fuel", "Equip", "Power", "Launch"],
+};
+---
+
+<BaseLayout
+  title="HKUST ECE MakerSpace — The Dream Workshop for Big Ideas"
+  description="The ECE MakerSpace at HKUST is the dream workshop for big ideas — 3D printers, laser cutters, resin printers, oscilloscopes and a mechanical workspace. Open to ELEC, MEIC & CPEG students and Year 1 Undeclared majors."
+>
+  {/* ---------- Hero ---------- */}
+  <section class="hero">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">HKUST · {site.dept.name}</p>
+        <h1 class="hero-title">
+          The <em>Dream</em> Workshop for <em>Big</em> Ideas
+        </h1>
+        <p class="hero-lede">
+          Prototypes, personal projects, wild what-ifs — build them here.
+          Membership is open to ECE students (ELEC, MEIC &amp; CPEG) and
+          Year 1 Undeclared majors.
+        </p>
+        <div class="btn-row">
+          <a
+            class="btn btn-primary btn-lg"
+            href={site.links.joinForm}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join Us
+          </a>
+          <a class="btn btn-ghost btn-lg" href="/explore">Explore facilities</a>
+        </div>
+      </div>
+      <figure class="hero-figure" aria-hidden="true">
+        <img
+          src="/images/home-hero-graphic.png"
+          alt=""
+          width="1024"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  {/* ---------- Media band: bench photo + word rotator ---------- */}
+  <section class="band section-tight" data-reveal>
+    <div class="container split">
+      <figure class="frame-photo">
+        <img
+          src="/images/bench-oscilloscope.webp"
+          alt="Siglent oscilloscope bench at the ECE MakerSpace"
+          width="1024"
+          height="683"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div>
+        <p class="eyebrow">Your space</p>
+        <p class="rotor-line">
+          <span class="sr-only">Your dream? We launch it.</span>
+          <span aria-hidden="true">
+            Your
+            <span class="rotor" style="--n: 4;">
+              {rotors.nouns.map((word, i) => (
+                <span style={`--i: ${i};`}>{word}</span>
+              ))}
+            </span>
+            ?
+          </span>
+        </p>
+        <p class="rotor-line" style="margin-bottom: var(--s-5);">
+          <span aria-hidden="true">
+            We
+            <span class="rotor" style="--n: 4;">
+              {rotors.verbs.map((word, i) => (
+                <span style={`--i: ${i};`}>{word}</span>
+              ))}
+            </span>
+            it.
+          </span>
+        </p>
+        <p class="lede">
+          A full electronics and fabrication workshop on the Main Campus — no
+          fees, no booking queues, just tools and time to build.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Eligibility strip ---------- */}
+  <section class="strip">
+    <div class="container strip-inner" data-reveal>
+      <p class="strip-title">{site.eligibility}</p>
+      <a
+        class="btn btn-ghost"
+        href={site.links.policyPdf}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Membership Policy
+      </a>
+    </div>
+  </section>
+
+  {/* ---------- Facilities preview ---------- */}
+  <section class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Explore</p>
+        <h2 class="section-title">Meet our equipment</h2>
+        <p class="lede">
+          From 3D printer farms to the mechanical bench — every station is
+          free to use for members once you're inducted.
+        </p>
+        <a class="more-link" href="/explore">See all facilities</a>
+      </div>
+      <div class="grid grid-3">
+        {
+          equipment.map((cat, i) => (
+            <a class="card is-link" href="/explore" data-reveal style={`--d: ${(i % 3) * 0.08}s;`}>
+              <div class="card-media">
+                <img
+                  src={cat.photos[0].src}
+                  alt={cat.photos[0].alt}
+                  width={cat.photos[0].width}
+                  height={cat.photos[0].height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{cat.title}</h3>
+                <p class="card-text">{cat.blurb}</p>
+                <span class="go">Explore</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Events preview ---------- */}
+  <section class="section band">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Events</p>
+        <h2 class="section-title">Workshops &amp; events</h2>
+        <p class="lede">
+          We regularly host enrichment workshops covering electronics and
+          engineering topics — from PCB design to soldering.
+        </p>
+        <a class="more-link" href="/events">See the calendar</a>
+      </div>
+      <div class="grid grid-2">
+        <a class="card is-link" href="/events" data-reveal>
+          <div class="card-media">
+            <img
+              src="/images/events-hero.jpg"
+              alt="Students gathered around a workbench during a MakerSpace workshop"
+              width="2560"
+              height="1707"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Upcoming workshops</h3>
+            <p class="card-text">
+              Induction training, enrichment workshops and hands-on sessions —
+              all posted on the event calendar.
+            </p>
+            <span class="go">Events</span>
+          </div>
+        </a>
+        <a class="card is-link" href="/community" data-reveal style="--d: 0.08s;">
+          <div class="card-media">
+            <img
+              src="/images/industry-day.jpeg"
+              alt="The MakerSpace booth at Industry Day 2025"
+              width="2276"
+              height="1517"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Industry Day 2025</h3>
+            <p class="card-text">
+              Candid shots from the MakerSpace at Industry Day — plus every
+              issue of our newsletter.
+            </p>
+            <span class="go">Community</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- MakerWIKI callout ---------- */}
+  <section class="section">
+    <div class="container">
+      <div class="feature-panel" data-reveal>
+        <div>
+          <p class="eyebrow">MakerWIKI</p>
+          <h2 class="section-title">MakerWIKI is up!</h2>
+          <p class="lede" style="margin-bottom: var(--s-5);">
+            Live machine status, component banks and workshop docs — check the
+            wiki before you build, and report issues to keep the space running.
+          </p>
+          <div class="btn-row">
+            <a
+              class="btn btn-primary"
+              href={site.links.wiki}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the Wiki ↗
+            </a>
+            <a
+              class="btn btn-ghost"
+              href={site.links.wikiBanks}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Component banks
+            </a>
+          </div>
+        </div>
+        <div class="browser-frame">
+          <div class="browser-bar" aria-hidden="true">
+            <i></i><i></i><i></i>
+            <span>wiki.ecemaker.space</span>
+          </div>
+          <img
+            src="/images/wiki-banner.png"
+            alt="Screenshot of the MakerWIKI homepage showing live machine status"
+            width="1826"
+            height="1017"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Community teaser ---------- */}
+  <section class="section band">
+    <div class="container split">
+      <figure class="frame-photo" data-reveal>
+        <img
+          src="/images/community-team.jpg"
+          alt="MakerSpace members collaborating on a project"
+          width="2560"
+          height="1440"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div data-reveal style="--d: 0.1s;">
+        <p class="eyebrow">Community</p>
+        <h2 class="section-title">Build with people, not just parts</h2>
+        <p class="lede" style="margin-bottom: var(--s-5);">
+          Members swap ideas in our WhatsApp Community and Discord server,
+          meet at workshops, and publish what they make in the newsletter.
+        </p>
+        <a class="btn btn-ghost" href="/community">Community &amp; newsletter</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Join CTA band ---------- */}
+  <section class="cta-band">
+    <div class="hero-photo" aria-hidden="true">
+      <img
+        src="/images/workshop-night.jpg"
+        alt=""
+        width="1818"
+        height="1212"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <h2 class="hero-title">JOIN US and START BUILDING!</h2>
+      <p class="lede" style="text-align: center;">
+        No membership fee. No selection process. Complete the sign-up form,
+        the intro safety course and two induction workshops — then the space
+        is yours.
+      </p>
+      <div class="btn-row" style="justify-content: center;">
+        <a class="btn btn-primary btn-lg" href="/join">Become a member</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
