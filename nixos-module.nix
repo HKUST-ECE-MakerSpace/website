@@ -29,8 +29,10 @@ in
     # No systemd service needed: the site is fully static, so Caddy serves it
     # straight from the (read-only) Nix store path.
     services.caddy.virtualHosts.${cfg.domain} = {
-      root = "${cfg.package}";
+      # caddy's virtualHosts has no `root` option on 26.05 — the directive
+      # goes in extraConfig instead
       extraConfig = ''
+        root * ${cfg.package}
         encode zstd gzip
 
         @static path /_astro/*
