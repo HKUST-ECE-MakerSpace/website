@@ -1,11 +1,11 @@
-# HKUST ECE MakerSpace — Website
+# HKUST ECE MakerSpace website
 
-The ECE Makerspace marketing site, serving **[web.ecemaker.space](https://web.ecemaker.space)**
+The ECE MakerSpace site, serving **[web.ecemaker.space](https://web.ecemaker.space)**
 (replacing `maker.ece.hkust.edu.hk`).
 
-Fully static [Astro](https://astro.build) — no runtime, no server, no state.
-The nix package output **is** the web root, so Caddy serves it straight from
-the Nix store.
+Fully static [Astro](https://astro.build): no runtime and no server.
+The nix package output **is** the web root, so Caddy serves it straight
+from the Nix store.
 
 ## Develop
 
@@ -77,5 +77,5 @@ immutable cache headers for `/_astro/*` (hashed build output), and a
 
 ## Status
 
-Built and verified locally only — **not yet deployed**. Push this repo to
+Built and verified locally only; **not yet deployed**. Push this repo to
 `HKUST-ECE-MakerSpace/website` and wire `lab-nixos` as above to go live.

@@ -9,7 +9,7 @@ export const site = {
   url: "https://web.ecemaker.space",
   email: "ecemakers@ust.hk",
   description:
-    "The HKUST ECE MakerSpace is the dream workshop for big ideas — 3D printers, laser cutters, resin printers, oscilloscopes and a mechanical workspace, open to ECE students.",
+    "The HKUST ECE MakerSpace is a student workshop in Room 3125A with 3D printers, laser cutters, resin printers, oscilloscopes and a mechanical workspace. Membership is free, with no selection process.",
   links: {
     wiki: "https://wiki.ecemaker.space/",
     wikiBanks: "https://wiki.ecemaker.space/docs/banks",

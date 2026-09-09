@@ -21,7 +21,7 @@ export const equipment: EquipmentCategory[] = [
   {
     id: "3d-printers",
     title: "3D Printers",
-    blurb: "A farm of FDM printers for fast prototyping — queue a print and keep building.",
+    blurb: "Bambu Lab P1S and H2C farms for FDM printing: queue a print and keep building.",
     photos: [
       {
         src: "/images/equipment-3d-printers-p1s.png",
@@ -40,7 +40,7 @@ export const equipment: EquipmentCategory[] = [
   {
     id: "laser-cutters",
     title: "Laser Cutters",
-    blurb: "Cut and engrave sheet materials with precision — from acrylic to plywood.",
+    blurb: "Cut and engrave sheet materials, from acrylic to plywood.",
     photos: [
       {
         src: "/images/equipment-laser-cutters.png",
