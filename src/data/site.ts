@@ -13,6 +13,11 @@ export const site = {
   links: {
     wiki: "https://wiki.ecemaker.space/",
     wikiBanks: "https://wiki.ecemaker.space/docs/banks",
+    wikiMachines: "https://wiki.ecemaker.space/docs/machines",
+    wikiWorkshops: "https://wiki.ecemaker.space/docs/workshops",
+    wikiRules: "https://wiki.ecemaker.space/docs/rules",
+    wikiFilament: "https://wiki.ecemaker.space/docs/filament",
+    signups: "https://signups.ecemaker.space/",
     joinForm:
       "https://forms.cloud.microsoft/pages/responsepage.aspx?id=UkEdbNA5ykSI2bjW3coHCJnvSzhQwDtNmnPrLLIob19UMDFJSzY3MUhEU1ZOT083WVpWNjgwM0FVUCQlQCN0PWcu&route=shorturl",
     policyPdf:
@@ -52,7 +57,8 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { label: "Explore", href: "/explore" },
   { label: "Events", href: "/events" },
-  { label: "Community", href: "/community" },
+  { label: "Bookings", href: site.links.calendar, external: true },
   { label: "Wiki", href: site.links.wiki, external: true },
+  { label: "Signups", href: site.links.signups, external: true },
   { label: "FAQ", href: "/faq" },
 ];
