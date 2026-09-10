@@ -77,8 +77,9 @@ immutable cache headers for `/_astro/*` (hashed build output), and a
 
 ## Status
 
-Live at https://web.ecemaker.space since 2026-09-09. Interim deploy: eez156
-pulls this repo from `/opt/website.git` (a bare mirror on the host; push
-with `git push server main`). Once `HKUST-ECE-MakerSpace/website` exists on
-GitHub, switch the flake input URL to `github:HKUST-ECE-MakerSpace/website`,
-run `nix flake lock --update-input website`, and delete the mirror.
+Live at https://web.ecemaker.space since 2026-09-09, deployed as a flake
+input of
+[lab-nixos](https://github.com/HKUST-ECE-MakerSpace/lab-nixos)
+(`services.makerspace-website` on eez156). Site updates: push here, then on
+the server `cd /etc/nixos && nix flake lock --update-input website &&
+nixos-rebuild switch --flake .#eez156`.
