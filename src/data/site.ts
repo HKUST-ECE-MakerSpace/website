@@ -18,6 +18,7 @@ export const site = {
     wikiRules: "https://wiki.ecemaker.space/docs/rules",
     wikiFilament: "https://wiki.ecemaker.space/docs/filament",
     signups: "https://signups.ecemaker.space/",
+    mahjong: "https://mahjong.ecemaker.space/",
     joinForm:
       "https://forms.cloud.microsoft/pages/responsepage.aspx?id=UkEdbNA5ykSI2bjW3coHCJnvSzhQwDtNmnPrLLIob19UMDFJSzY3MUhEU1ZOT083WVpWNjgwM0FVUCQlQCN0PWcu&route=shorturl",
     policyPdf:
